@@ -1,0 +1,29 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.4.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.navis'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile 'org.springframework.boot:spring-boot-starter-web'
+
+	compile 'org.elasticsearch.client:elasticsearch-rest-high-level-client:6.7.1'
+	compile 'org.elasticsearch:elasticsearch:6.7.1'
+	compile group: 'org.elasticsearch.client', name: 'transport', version: '6.7.1'
+	compile group: 'org.elasticsearch.plugin', name: 'transport-netty4-client', version: '6.7.1'
+
+	compile(group: 'com.google.code.gson', name: 'gson', version: '2.7')
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	compile('org.projectlombok:lombok:1.18.2')
+	annotationProcessor('org.projectlombok:lombok:1.18.2')
+}

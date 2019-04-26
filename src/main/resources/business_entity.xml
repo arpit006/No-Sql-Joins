@@ -1,0 +1,9 @@
+<Business-Entities>
+    <Business-Entity name="unit" primary-document = "inv_unit" primary-id="gkey">
+        <table name="inv_unit"></table>
+        <table name="inv_unit_fcy_visit"></table>
+        <table name="inv_unit_yrd_visit"></table>
+        <table name="ref_equipment"></table>
+        <table name="ref_equipment_type"></table>
+    </Business-Entity>
+</Business-Entities>

@@ -1,0 +1,9 @@
+GET http://10.43.131.186:9200/unit/_search
+Content-Type: application/json
+
+###
+
+GET http://10.43.131.186:9200/INV_UNIT_UFV_UVY/_count
+Content-Type: application/json
+
+###

@@ -1,0 +1,49 @@
+<?xml version = "1.0"?>
+<Entities>
+    <Entity name="unit">
+        <table id="inv_unit" primary-key="gkey" alias-name="inv_unit" type="primary" rekeyed-table-name="inv_unit_rekeyed">
+            <join ref="inv_unit_fcy_visit" type="left" parent-column="active_ufv">
+                <join ref="inv_unit_yrd_visit" type="left" parent-column="gkey">
+                    <join ref="argo_yard" type="left" parent-column="yrd_gkey"/>
+                </join>
+                <join ref="argo_facility" type="inner" parent-column="fcy_gkey"/>
+            </join>
+        </table>
+
+        <table id="inv_unit_fcy_visit" primary-key="gkey" alias-name="ufv" type="secondary" rekeyed-table-name="inv_unit_rekeyed">
+            <join ref="inv_unit" type="inner" parent-column="unit_gkey"/>
+            <join ref="inv_unit_yrd_visit" type="left" parent-column="gkey">
+                <join ref="argo_yard" type="left" parent-column="yrd_gkey"/>
+            </join>
+            <join ref="argo_facility" type="inner" parent-column="fcy_gkey"/>
+        </table>
+
+        <table id="inv_unit_yrd_visit" primary-key="ufv_gkey" alias-name="uyv" type="secondary" rekeyed-table-name="inv_unit_rekeyed">
+            <join ref="inv_unit_fcy_visit" type="inner" parent-column="ufv_gkey">
+                <join ref="inv_unit" type="inner" parent-column="unit_gkey"/>
+                <join ref="argo_facility" type="inner" parent-column="fcy_gkey"/>
+            </join>
+            <join ref="argo_yard" type="left" parent-column="yrd_gkey"/>
+        </table>
+
+        <table id="ref_equipment" primary-key="gkey" alias-name="equipment" type="secondary">
+            <join ref="inv_unit_rekeyed" type="inner" parent-column="gkey"/>
+            <join ref="ref_equip_type" type="left" parent-column="eqtyp_gkey"/>
+        </table>
+
+        <table id="inv_unit_rekeyed" primary-key="inv_unit.eq_gkey" type="rekeyed">
+            <join ref="ref_equipment" type="left" parent-column="eq_gkey">
+                <join ref="ref_equip_type" type="left" parent-column="eqtyp_gkey"/>
+            </join>
+        </table>
+    </Entity>
+
+    <Entity name="argo">
+        <table id="argo_complex" primary-key="gkey" alias-name="complex" type="reference"/>
+        <table id="argo_facility" primary-key="gkey" alias-name="fcy" type="reference"/>
+        <table id="argo_yard" primary-key="gkey" alias-name="yard" type="reference"/>
+        <table id="inv_goods" primary-key="gkey" alias-name="goods" type="reference"/>
+        <table id="ref_bizunit_scoped" primary-key="gkey" alias-name="bizunit" type="reference"/>
+        <table id="ref_equip_type" primary-key="gkey" alias-name="equiptype" type="reference"/>
+    </Entity>
+</Entities>

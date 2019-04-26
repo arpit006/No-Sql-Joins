@@ -1,0 +1,28 @@
+{
+  "table": "bi",
+  "timestamp": 15428514271237,
+  "after": {
+    "value": [
+      {
+        "key": "a",
+        "value": 412,
+        "type": "int64"
+      },
+      {
+        "key": "b",
+        "value": "text",
+        "type": "string"
+      },
+      {
+        "key": "c",
+        "value": 4,
+        "type": "int32"
+      },
+      {
+        "key": "d",
+        "value": false,
+        "type": "boolean"
+      }
+    ]
+  }
+}
